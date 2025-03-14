@@ -323,7 +323,7 @@ namespace KeybladeSwitch
 
         public static void Main(string[] args)
         {
-            Terminal.Log("Initalizing Keyblade Switcher v1.00 by TopazTK...", 0);
+            Terminal.Log("Initalizing Keyblade Switcher v1.10 by TopazTK...", 0);
 
             Terminal.Log("Initializing Kingdom Hearts II - Flexible Modding Library...", 1);
             Entry.Initialize(Process.GetProcessesByName("KINGDOM HEARTS II FINAL MIX")[0]);
