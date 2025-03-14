@@ -61,6 +61,8 @@ namespace KeybladeSwitch
                         var _readTarget = Hypervisor.Read<ushort>(Variables.MemoryKH["KEYBLADE_DRIVES"] + (i * 0x02), true);
 
                         Hypervisor.Write(_offsetKey, _readTarget);
+
+                        Hypervisor.Write(Variables.ADDR_SaveData + 0xE400 + (i * 0x02), _readKey);
                         Hypervisor.Write(Variables.MemoryKH["KEYBLADE_SWITCH"] + (i * 0x02), _readKey, true);
                     }
                 }
@@ -102,6 +104,7 @@ namespace KeybladeSwitch
                             var _readTarget = Hypervisor.Read<ushort>(Variables.MemoryKH["KEYBLADE_SWITCH"] + (i * 0x02), true);
 
                             Hypervisor.Write(_offsetKey, _readTarget);
+                            Hypervisor.Write(Variables.ADDR_SaveData + 0xE400 + (i * 0x02), _readKey);
                             Hypervisor.Write(Variables.MemoryKH["KEYBLADE_DRIVES"] + (i * 0x02), _readKey, true);
                         }
                     }
@@ -120,6 +123,7 @@ namespace KeybladeSwitch
                             var _readTarget = Hypervisor.Read<ushort>(Variables.MemoryKH["KEYBLADE_DRIVES"] + (i * 0x02), true);
 
                             Hypervisor.Write(_offsetKey, _readTarget);
+                            Hypervisor.Write(Variables.ADDR_SaveData + 0xE400 + (i * 0x02), _readKey);
                             Hypervisor.Write(Variables.MemoryKH["KEYBLADE_SWITCH"] + (i * 0x02), _readKey, true);
                         }
                     }
