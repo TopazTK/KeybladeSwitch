@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System.Diagnostics;
 
 using KH2FML;
@@ -255,7 +255,24 @@ namespace KeybladeSwitch
                 var _formKey = Hypervisor.Read<short>(Variables.ADDR_SaveData + 0x32BCU + 0x38U * _soraForm);
 
                 if (_fetchKey == 0x0310)
+                {
+                    if (_changingMain)
+                    {
+                        CURRENT_BASE++;
+
+                        if (CURRENT_BASE >= _keyDictionary.Length)
+                            CURRENT_BASE = 0x00;
+                    }
+
+                    else
+                    {
+                        CURRENT_FORM++;
+
+                        if (CURRENT_FORM >= _keyDictionary.Length)
+                            CURRENT_FORM = 0x00;
+                    }
                     goto KEY_INIT;
+                }
 
                 Sound.PlayVSB("se/zz00_keyswitch.win32.scd");
 
@@ -323,7 +340,7 @@ namespace KeybladeSwitch
 
         public static void Main(string[] args)
         {
-            Terminal.Log("Initalizing Keyblade Switcher v1.10 by TopazTK...", 0);
+            Terminal.Log("Initalizing Keyblade Switcher v1.00 by TopazTK...", 0);
 
             Terminal.Log("Initializing Kingdom Hearts II - Flexible Modding Library...", 1);
             Entry.Initialize(Process.GetProcessesByName("KINGDOM HEARTS II FINAL MIX")[0]);
